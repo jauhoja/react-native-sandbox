@@ -1,45 +1,34 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Text, View } from 'react-native';
+//import MapLibreMap from './MapLibreMap';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { MapView } from "@maplibre/maplibre-react-native";
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+const HelloView = () => {
+   return <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 12,
+        borderColor: 'lightblue',
+        borderRadius: 50
+      }}>
+      <Text>Hello, world!</Text>
     </View>
-  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+    function App() {
+  return (
+  <>
+    <HelloView />
+      <MapView style={{
+         flex: 1,
+        borderWidth: 12,
+        borderColor: 'pink',
+        }}/>
+  </>
+  )
+}
 
 export default App;
