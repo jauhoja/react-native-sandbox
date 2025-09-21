@@ -13,4 +13,17 @@ npm run android # this should open an android emulator and after a while it shou
 4. Try doing some changes in the codebase and see if the changes are reflected
 
 - Gradle seems to be a little bit pain in the back. Uninstalling `c:/users/<user>/.gradle` and running the `android` script seems to solve some things
+- To clean gradel cache do following
+``` sh
+# in repo folder
+cd android
+.\gradle clean
+
+# if it doesn't work try stopping the gradle service with
+.\gradlew --stop
+
+# to display gradle instances
+.\gradlew --status
+```
 - MapLibre Native node package is `@maplibre/maplibre-react-native`
+- If you are running this on a laptop and your avd is not starting, it may be due to screen size being too small. I switched display scaling from 125% too 100% and emulator started succesfully.
