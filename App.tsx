@@ -1,34 +1,43 @@
-import { Text, View } from 'react-native';
-//import MapLibreMap from './MapLibreMap';
+import { Button, Text, View } from 'react-native';
+import MapLibreMap from './MapLibreMap';
 
-import { MapView } from "@maplibre/maplibre-react-native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStaticNavigation, useNavigation } from '@react-navigation/native';
 
 
-const HelloView = () => {
-   return <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 12,
-        borderColor: 'lightblue',
-        borderRadius: 50
-      }}>
-      <Text>Hello, world!</Text>
-    </View>
+const Home = () => {
+  const navigation = useNavigation();
+  return <View
+    style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <Text>This is such a great application</Text>
+    <Button title="Go to map" onPress={() => navigation.navigate('MapLibreMap')} />
+  </View>
 }
 
-    function App() {
+const RootStack = createNativeStackNavigator({
+  screens: {
+    Home: {
+      screen: Home,
+      options: {
+        title: "Home"
+      }
+    },
+    MapLibreMap: {
+      screen: MapLibreMap,
+    },
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
+
+function App() {
   return (
-  <>
-    <HelloView />
-      <MapView style={{
-         flex: 1,
-        borderWidth: 12,
-        borderColor: 'pink',
-        }}/>
-  </>
-  )
+  <Navigation />
+ )
 }
 
 export default App;
